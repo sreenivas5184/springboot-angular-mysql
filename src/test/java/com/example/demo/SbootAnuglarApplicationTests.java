@@ -11,7 +11,7 @@ public class SbootAnuglarApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		System.out.println("Test class");
+		System.out.println("Running Test class by sreenivas ::::::::::: Rajaaaaaaaaa");
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SbootAnuglarApplication {
 
 	public static void main(String[] args) {
+		System.out.println("Spring boot::::::::::::");
 		SpringApplication.run(SbootAnuglarApplication.class, args);
 	}
 }
