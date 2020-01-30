@@ -13,5 +13,6 @@
         <property name="format_sql">false</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="com.example.models.SignUpBeanEntity"/>
+        <mapping class="com.example.models.Vehicle"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.models.ResponseBean;
 import com.example.models.SignUpBeanEntity;
+import com.example.models.Vehicle;
 
 @Repository
 public class AngDao {
@@ -24,6 +26,10 @@ public class AngDao {
 		EntityManager entityManager = entityManage.getEntityManager();
 		entityManager.getTransaction().begin();
 		System.out.println("sbean::::::::::::"+sbean);
+		Vehicle vehicle = new Vehicle();
+		vehicle.setVname("Bike");
+		vehicle.setVmodel("Shine");
+		sbean.getVehicle().add(vehicle);
 		entityManager.persist(sbean);
 		entityManager.getTransaction().commit();
 		entityManager.close();
@@ -36,8 +42,10 @@ public class AngDao {
 		query.setString("email", sbean.getEmail());
 		query.setString("password", sbean.getPassword());
 		Object uniqueResult = query.uniqueResult();
-		System.out.println(uniqueResult);
 		SignUpBeanEntity bean = (SignUpBeanEntity)uniqueResult;
+		System.out.println("bean ::::::::::" + bean);
+		//List<Vehicle> vehicles = bean.getVehicle();
+		//System.out.println("vehicles ::::::::::" + vehicles.size());
 		Date lastLoginDate = null;
 		if(uniqueResult !=null) {
 			lastLoginDate = bean.getLastLoignDate();

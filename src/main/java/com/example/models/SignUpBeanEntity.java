@@ -1,11 +1,15 @@
 package com.example.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,16 +36,21 @@ public class SignUpBeanEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	Date lastLoginDate;
 	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "beanEntity")
+	List<Vehicle> vehicle = new ArrayList<Vehicle>();
+	
 	public Date getLastLoignDate() {
 		return lastLoginDate;
 	}
 	public void setLastLoignDate(Date lastLoignDate) {
 		this.lastLoginDate = lastLoignDate;
 	}
+
 	@Override
 	public String toString() {
 		return "SignUpBeanEntity [UserId=" + UserId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
-				+ email + ", password=" + password + ", lastLoginDate=" + lastLoginDate + "]";
+				+ email + ", password=" + password + ", address=" + address + ", phoneNumber=" + phoneNumber
+				+ ", lastLoginDate=" + lastLoginDate + "]";
 	}
 	public String getFirstName() {
 		return firstName;
@@ -85,6 +94,12 @@ public class SignUpBeanEntity {
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	public List<Vehicle> getVehicle() {
+		return vehicle;
+	}
+	public void setVehicle(List<Vehicle> vehicle) {
+		this.vehicle = vehicle;
 	}
 
 }
